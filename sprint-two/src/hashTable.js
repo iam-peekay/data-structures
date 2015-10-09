@@ -26,6 +26,9 @@ HashTable.prototype.insert = function(k, v) {
   }
 
   this._length++;
+  // if (this._limit * 0.75 < this._length) {
+  //   this.resize();
+  // }
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -46,10 +49,53 @@ HashTable.prototype.remove = function(k) {
       bucket[i][1] = null;
     }
   }
+  this._length--;
+  // if (this._limit * 0.25 > this._length) {
+  //   this.resize();
+  // }
 };
 
-HashTable.prototype.resize= function() {
-};
+// HashTable.prototype.resize= function() {
+//   // inner helper function to resize the hash table and reposition elements
+
+//   // if 75% capacity (limit * .75 < length)
+//   if (this._limit * 0.75 < this._length) {
+//     this._limit *= 2;
+//     this._storage.each(function(bucket, i, storage) {
+//         // save the current bucket in temp variable
+//       var temp = bucket;
+//       // rehash
+//       var index = getIndexBelowMaxForKey(bucket[0][0], this._limit);
+//       // add new hash to hashtable and push temp items into new has
+//       this._storage.set(index, temp);
+//     });
+//   } else {
+//     // if 25% capacity (limit * .25 > length)
+//     this._limit *= 0.5;
+//     this._storage.each(function(bucket, i, storage) {
+//       console.log(bucket, i, storage);
+//         // save the current bucket in temp variable
+//       var temp = bucket;
+//       // rehash
+//       var index = getIndexBelowMaxForKey(bucket[0][0], this._limit);
+//       // add new hash to hashtable and push temp items into new has
+//       this._storage.set(index, temp);
+//     });
+//   }
+// };
+
+  // var resizer = function(that) {
+  //   console.log(that._storage);
+  //   // loop through all the indexes
+  //   that._storage.each(function(bucket, i, storage) {
+  //       // save the current bucket in temp variable
+  //     var temp = bucket;
+  //     // rehash
+  //     var index = getIndexBelowMaxForKey(bucket[0][0], that._limit);
+  //     // add new hash to hashtable and push temp items into new has
+  //     that._storage.set(index, temp);
+  //   });
+  // };
 
 
 /*

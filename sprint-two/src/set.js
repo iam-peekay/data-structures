@@ -21,6 +21,7 @@ setPrototype.remove = function(item) {
   this._storage.splice(index, 1);
 };
 
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
