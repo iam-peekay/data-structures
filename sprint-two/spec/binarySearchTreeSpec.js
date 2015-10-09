@@ -16,8 +16,9 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(6);
-    expect(binarySearchTree.left.right.value).to.equal(3);
-    expect(binarySearchTree.right.left.value).to.equal(6);
+    console.log(binarySearchTree);
+    expect(binarySearchTree.root.left.right.value).to.equal(3);
+    expect(binarySearchTree.root.right.left.value).to.equal(6);
   });
 
   it('should have a working "contains" method', function(){
