@@ -117,7 +117,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
       toLoc = this.nodeList[i].edges;
     }
   }
-  debugger;
+  
   if (containsFrom && containsTo) {
     fromLoc.splice(fromLoc.indexOf(toNode), 1);
     toLoc.splice(toLoc.indexOf(fromNode), 1);
