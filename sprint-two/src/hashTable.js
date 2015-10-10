@@ -46,7 +46,7 @@ HashTable.prototype.remove = function(k) {
   var bucket = this._storage.get(index);
   for (var i = 0; i < bucket.length; i++) {
     if (bucket[i][0] === k) {
-      bucket[i][1] = null;
+      bucket.splice(i, 1);
     }
   }
   this._length--;
@@ -60,29 +60,28 @@ HashTable.prototype.resize= function() {
 
   // if 75% capacity (limit * .75 < length)
   if (this._limit * 0.75 < this._length) {
+    var copy = this._storage;
     this._limit *= 2;
-    this._storage.each(function() {
+    this._storage = LimitedArray(this._limit);
+    copy.each(function() {
       return function(bucket, i, storage) {
-        // save the current bucket in temp variable
-      var temp = bucket;
-      // rehash
+
       var index = getIndexBelowMaxForKey(bucket[0][0], this._limit);
       // add new hash to hashtable and push temp items into new has
-      this._storage.set(index, temp);
+      this._storage.set(index, bucket);
     };
     });
   } else {
     // if 25% capacity (limit * .25 > length)
+    var copy = this._storage;
     this._limit *= 0.5;
-    this._storage.each(function() {
+    this._storage = LimitedArray(this._limit);
+    copy.each(function() {
       return function(bucket, i, storage) {
-      console.log(bucket, i, storage);
-        // save the current bucket in temp variable
-      var temp = bucket;
       // rehash
       var index = getIndexBelowMaxForKey(bucket[0][0], this._limit);
       // add new hash to hashtable and push temp items into new has
-      this._storage.set(index, temp);
+      this._storage.set(index, bucket);
     };
     });
   }
