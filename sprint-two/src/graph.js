@@ -97,4 +97,4 @@ Graph.prototype.forEachNode = function(cb) {
  * Complexity: What is the time complexity of the above functions?
  */
 
-
+// Constant because we are using only objects to implement
