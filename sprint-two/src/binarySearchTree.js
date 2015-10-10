@@ -47,11 +47,82 @@ BinarySearchTreeMethods.insert = function(value, child) {
   
 };
 
-BinarySearchTreeMethods.contains = function(value) {
+BinarySearchTreeMethods.contains = function(value, child) {
+  var contains = false;
+  var root = this.root;
 
+  if (root === undefined) {
+    return false;
+  }
+  // //current = the recursively called node or root
+  // var current = child || this.root;
+
+  // //check if value is less or equal to current
+  // if (value <= current.value) {
+  //   if (current.value === value) {
+  //     contains = true;
+  //   } else {
+  //     this.contains(value, current.left);
+  //   }
+  // } else {
+  //   if (current.value === value) {
+  //     contains = true;
+  //   } else {
+  //     this.contains(value, current.right);
+  //   }
+  // }
+
+  var searchChildren = function(value, child) {
+
+    //current = the recursively called node or root
+    var current = child;
+
+    //check if value is less or equal to current
+    if (value <= current.value) {
+      if (current.value === value) {
+        contains = true;
+      } else {
+        if (current.left === null) {
+          return;
+        }
+        searchChildren(value, current.left);
+      }
+    } else {
+      if (current.value === value) {
+        contains = true;
+      } else {
+        if (current.right === null) {
+          return;
+        }
+        searchChildren(value, current.right);
+      }
+    }    
+  }
+
+  searchChildren(value, root)
+
+  return contains;
 };
 
-BinarySearchTreeMethods.depthFirstLog = function(cb) {
+BinarySearchTreeMethods.depthFirstLog = function(cb, child) {
+  if (this.root === undefined) {
+    return;
+  }
+
+  var current = child || this.root;
+
+  if (current === this.root) {
+    cb(this.root.value);
+  }
+
+  if (current.left) {
+    cb(current.left.value);
+    this.depthFirstLog(cb, current.left);
+  } 
+  if (current.right) {
+    cb(current.right.value);
+    this.depthFirstLog(cb, current.right);
+  }
 
 };
 
