@@ -1,5 +1,4 @@
 
-
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
@@ -23,7 +22,7 @@ HashTable.prototype.insert = function(k, v) {
     }
   }
 
-    // else, push the current key and value as a tuple into the bucket 
+    // else, push the current key and value as a tuple into the bucket
   bucket.push([k, v]);
     // set the current index to the new updated bucket
   this._storage.set(index, bucket);
@@ -106,5 +105,3 @@ HashTable.prototype._resize = function(newLimit) {
  */
  // Constant time, except for when you resize or when there is a chance that all of the tuples
  // end up in one bucket
-
-

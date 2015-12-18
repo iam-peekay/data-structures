@@ -5,19 +5,21 @@ var Stack = function() {
   var storage = {};
   var length = 0;
 
-  // Implement the methods below
   someInstance.push = function(value) {
+    // Add new item to stack at the index value of stack's length
     storage[length] = value;
     length++;
   };
 
   someInstance.pop = function() {
-    if (length > 0) {
-      var result = storage[length - 1];
-      delete storage[length];
-      length--;
-      return result;
-    }
+    // If more than 1 item in stack
+      // we return the last item put into the stack, which is the item at
+    length && length--;
+    var result = storage[length];
+
+    delete storage[length];
+
+    return result;
   };
 
   someInstance.size = function() {

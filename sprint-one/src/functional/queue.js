@@ -5,21 +5,20 @@ var Queue = function() {
   var storage = {};
   var front = 0;
   var back = 0;
-  // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    storage[back] = value;
-    back++;
+    storage[back++] = value;
   };
 
   someInstance.dequeue = function() {
-    if((back - front) > 0) {
-      var result = storage[front];
-      delete storage[front];
-      front++;
-      return result;
-    }
-
+    // If there are items in the queue
+      // Increment front index
+    someInstance.size() && front++;
+    // Store the first item in a temp result variable
+    var result = storage[front];
+    // Delete the first item in Queue
+    delete storage[front];
+    return result;
   };
 
   someInstance.size = function() {

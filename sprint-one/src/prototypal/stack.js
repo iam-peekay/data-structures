@@ -14,14 +14,16 @@ var stackMethods = {
     this.storage[this.length] = value;
     this.length++;
   },
+
   pop: function() {
-    if (this.size()) {
-      var result = this.storage[this.length - 1];
-      delete this.storage[this.length];
-      this.length--;
-      return result;
-    }
+    this.length && this.length--;
+    var result = this.storage[this.length];
+
+    delete this.storage[this.length];
+
+    return result;
   },
+  
   size: function() {
     return this.length;
   }

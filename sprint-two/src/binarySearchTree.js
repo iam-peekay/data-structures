@@ -98,7 +98,7 @@ BinarySearchTreeMethods.contains = function(value, child) {
         }
         searchChildren(value, current.right);
       }
-    }    
+    }
   }
 
   // invoke inner function with the value passed in and tree's root
@@ -128,7 +128,7 @@ BinarySearchTreeMethods.depthFirstLog = function(cb, child) {
     cb(current.left.value);
     // then recurse on the current's left child
     this.depthFirstLog(cb, current.left);
-  } 
+  }
   // if current node has a right child
     // execute the call back on the right child's value
   if (current.right) {
@@ -144,7 +144,7 @@ BinarySearchTreeMethods.depthFirstLog = function(cb, child) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-// insertion: O(log n) - because we divide the tree in half each time we look for a place to insert
-// contains: O(log n) - because we divide the tree in half of each search iteration
-// depthFirstLog: O(n) - because we have to visit each node
+// Insertion: O(log n) - because we divide the tree in half each time we look for a place to insert
+// Contains: O(log n) - because we divide the tree in half of each search iteration
+// DepthFirstLog: O(n) - because we have to visit each node
 // so overall, it's O(n)
